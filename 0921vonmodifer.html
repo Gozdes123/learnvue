@@ -10,13 +10,28 @@
 </head>
 
 <body>
-  <div id="app">
+  <!-- <div id="app">
     <div class="outer" @click="alert1()">
       <span>Outer</span>
       <div class="inner" @click=" alert2()">Inner</div>
     </div>
   </div>
   <script>
+    let vm = Vue.createApp({
+      methods: {
+        alert1() {
+          console.log('outer')
+        },
+        alert2() {
+          console.log('inner')
+        },
+      }
+    }).mount('#app')
+  </script> -->
+  <div id="app"> <a href="https://www.google.com.tw/?hl=zh_TW" class="btn" @click.prevent="alert1()">clickme</a></div>
+
+  <script>
+
     let vm = Vue.createApp({
       methods: {
         alert1() {

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@next"></script>
+  <title>Document</title>
+</head>
+<style>
+  #app {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  p {
+    margin: 1rem 0;
+  }
+
+  input {
+    padding: 3px;
+  }
+
+</style>
+
+<body>
+  <div id="app">
+    <p>你按下的是按鍵是: {{ pressKey }}</p>
+    <input type="text" @keyup="press">
+  </div>
+  <script>
+    const vm = Vue.createApp({
+      data: () => {
+        return {
+          pressKey: ''
+        }
+      },
+      methods: {
+        press(event) {
+          this.pressKey = event.key;
+          window.setTimeout(() => {
+            event.target.value = '';
+          }, 300)
+        }
+      }
+    }).mount('#app');
+  </script>
+</body>
+
+</html>
