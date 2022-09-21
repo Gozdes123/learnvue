@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@next"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <p><input type="checkbox" v-model="actionarray" value="吃飯">吃飯</p>
+    <p><input type="checkbox" v-model="actionarray" value="睡覺">睡覺</p>
+    <p><input type="checkbox" v-model="actionarray" value="讀書">讀書</p>
+  </div>
+
+  <script>
+    let vm = Vue.createApp({
+      el: "#app",
+      data: {
+        action: true,
+        actionarray: [],
+      }
+    })
+  </script>
+</body>
+
+</html>
