@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@next"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <button v-for="item in tabs" :key="item" @click="titleTabclick(item)">
+      {{ item }}
+    </button>
+    <!-- titleTab的值有變化，元件跟著切換 -->
+    <component :is="tabComponent">
+  </div>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          titleTab: 'One',
+          tabs: ['One', 'Two', 'Three', 'Four', 'Five', 'six'],
+        };
+      },
+      methods: {
+        titleTabclick(e) {
+          this.titleTab = e
+        }
+      },
+      computed: {
+        tabComponent() {
+          // 轉成小寫並回傳 ，符合相對應的component名稱，就會顯示。
+          return `tab-${this.titleTab.toLowerCase()}`
+        }
+      }
+    });
+    app.component("tab-one", {
+      template: `<div class="tab1">One component</div>`
+    });
+    app.component("tab-two", {
+      template: `<div class="tab2">Two component</div>`
+    });
+    app.component("tab-three", {
+      template: `<div class="tab3">three component</div>`
+    });
+    app.component("tab-four", {
+      template: `<div class="tab4">four component</div>`
+    });
+    app.component("tab-five", {
+      template: `<div class="tab5">five component</div>`
+    });
+    app.component("tab-six", {
+      template: `<div class="tab6">six component</div>`
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

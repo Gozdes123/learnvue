@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@next"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <button v-for="item in tabs" :key="item" @click="titleTab = item">
+      {{ item }}
+    </button>
+    <!-- titleTab的值有變化，元件跟著切換 -->
+    <keep-alive include="hey,heyy">
+      <component :is="tabComponent">
+    </keep-alive>
+  </div>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          titleTab: 'One',
+          tabs: ['One', 'Two', 'Three'],
+        };
+      },
+      computed: {
+        tabComponent() {
+          // 轉成小寫並回傳 ，符合相對應的component名稱，就會顯示。
+          return `tab-${this.titleTab.toLowerCase()}`
+        }
+      }
+    });
+    app.component("tab-one", {
+      name: 'hey',
+      template: `<div class="tab">One component</div>
+  <input type="text" v-model="text">`,
+      data() {
+        return {
+          text: "第一個子元件"
+        }
+      }
+    });
+    app.component("tab-two", {
+      name: 'heyy',
+      template: `<div class="tab">Tow component</div>
+  <input type="text" v-model="text">`,
+      data() {
+        return {
+          text: "第二個子元件"
+        }
+      }
+    });
+    app.component("tab-three", {
+      template: `<div class="tab">Tow component</div>
+  <input type="text" v-model="text">`,
+      data() {
+        return {
+          text: "第三個子元件"
+        }
+      },
+    });
+    app.mount("#app");
+  </script>
+</body>
+
+</html>

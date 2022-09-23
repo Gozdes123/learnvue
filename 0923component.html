@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@next"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <for-test></for-test>
+    <test2></test2>
+    <test3></test3>
+  </div>
+  <script type="text/x-template" id="media-block">
+  <div id="foff">
+      <button>我是一號</button>
+      <button>我是2號</button>
+  </div>
+  </script>
+  <script>
+    let vm = Vue.createApp({
+      components: {
+        test2: {
+          template: `<div>我是區域</div>`
+        },
+        test3: {
+          template: '#media-block'
+        }
+      }
+    })
+    vm.component('for-test', {
+      template: `<div>我是全域</div>`
+    })
+    vm.mount('#app')
+  </script>
+
+</body>
+
+</html>
