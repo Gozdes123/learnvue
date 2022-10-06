@@ -1,6 +1,6 @@
 <template>
   <div class="bg-[#f8f8f5] inline-block">
-    <div class="flex gap-6 w-[70%] m-auto">
+    <div class="flex gap-6 w-[80%] m-auto">
       <div class="w-[33%] mt-10">
         <img src="../assets/japanwebsite/osuimono-monaka_bn.jpg" alt="" />
         <p class="text-[20px] mt-5">至福の一椀「お吸物もなか」</p>
